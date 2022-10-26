@@ -30,7 +30,7 @@ public:
 
     void FillFileInfoHeader(char informationHeader[]) const;
 
-    void SaveImage(std::string& path);
+    void SaveImage(const std::string& path);
 
 private:
     const int8_t kHeaderSize = 14;

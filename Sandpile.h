@@ -23,7 +23,7 @@ public:
 
     bool Stable() const;
 
-    void Save(std::string& path);
+    void Save(const std::string& path);
 
 private:
     size_t width_;

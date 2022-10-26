@@ -9,7 +9,7 @@ void Image::SetColor(size_t x, size_t y, const Color& color) {
 }
 
 
-void Image::SaveImage(std::string& path) {
+void Image::SaveImage(const std::string& path) {
     std::ofstream f;
     f.open(path, std::ios::out | std::ios::binary);
 

@@ -28,9 +28,9 @@ bool Sandpile::DoIteration() {
     }
 
     for (size_t y = 0; y < height_; ++y) {
-        for (size_t x = 0; x < width_; ++x) {
-            new_grid[y + extend_up_][x + extend_left_] = grid_[y][x];
-        }
+          for (size_t x = 0; x < width_; ++x) {
+              new_grid[y + extend_up_][x + extend_left_] = grid_[y][x];
+          }
     }
 
     bool prev_ext_up = extend_up_;
@@ -61,17 +61,10 @@ bool Sandpile::DoIteration() {
     }
     delete[] grid_;
 
-
     SetHeight(new_height);
     SetWidth(new_width);
-    grid_ = new size_t* [height_];
-    for (size_t i = 0; i < height_; ++i) {
-        grid_[i] = new uint64_t[width_];
-        memcpy(grid_[i], new_grid[i], new_width * sizeof(new_grid[i]));
-        delete[] new_grid[i];
-    }
 
-    delete[] new_grid;
+    grid_ = new_grid;
     return isStable_;
 }
 
@@ -79,7 +72,7 @@ bool Sandpile::Stable() const {
     return isStable_;
 }
 
-void Sandpile::Save(std::string& path) {
+void Sandpile::Save(const std::string& path) {
     UpdateImage();
     image_.SaveImage(path);
 }
