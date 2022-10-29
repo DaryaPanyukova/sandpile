@@ -15,8 +15,9 @@ GenerateFileName(const std::string& path, const std::string& default_name,
 
 
 void
-ReadToGrid(const std::string& path, uint64_t**& grid, size_t height, size_t width) {
-    grid = new size_t* [height];
+ReadToGrid(const std::string& path, uint64_t**& grid, size_t height,
+           size_t width) {
+    grid = new uint64_t* [height];
     for (size_t i = 0; i < height; ++i) {
         grid[i] = new uint64_t[width];
         for (size_t j = 0; j < width; ++j) {
@@ -37,8 +38,9 @@ ReadToGrid(const std::string& path, uint64_t**& grid, size_t height, size_t widt
 }
 
 
-void ClearFolder(const std::string& output_path, const std::string& default_name,
-                 const std::string& final_file) {
+void
+ClearFolder(const std::string& output_path, const std::string& default_name,
+            const std::string& final_file) {
     for (int32_t i = 0;; ++i) {
         std::string filename = GenerateFileName(output_path, default_name, i);
         std::ifstream file(filename);
@@ -84,7 +86,8 @@ int main(int argc, char** argv) {
             input_file = argv[++i];
         } else if (strcmp(term, "--output") == 0 || strcmp(term, "--o") == 0) {
             output_path = argv[++i];
-        } else if (strcmp(term, "--max-iter") == 0 || strcmp(term, "--m") == 0) {
+        } else if (strcmp(term, "--max-iter") == 0 ||
+                   strcmp(term, "--m") == 0) {
             max_iter = atoi(argv[++i]);
         } else if (strcmp(term, "--freq") == 0 || strcmp(term, "--f") == 0) {
             frequency = atoi(argv[++i]);
@@ -93,6 +96,8 @@ int main(int argc, char** argv) {
 
 
     uint64_t** grid;
+    width += 2;
+    height += 2;
     ReadToGrid(input_file, grid, height, width);
     Sandpile sandpile(width, height, grid);
 
@@ -100,9 +105,12 @@ int main(int argc, char** argv) {
     std::string final_file = output_path + "\\final.bmp";
     ClearFolder(output_path, default_name, final_file);
 
+
     for (size_t i = 0; i < max_iter && !sandpile.Stable(); ++i) {
         sandpile.DoIteration();
+
         if (frequency != 0 && i % frequency == 0) {
+
             GenerateFileName(output_path, default_name,
                              i == 0 ? 0 : i / frequency);
             std::string output_file =

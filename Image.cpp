@@ -105,8 +105,10 @@ void Image::SetHeight(size_t height) {
 }
 
 void Image::CreateNewImage(size_t width, size_t height) {
-    delete[] colors_;
-    colors_ = new Color[width * height];
+    if (width != width_ || height != height_) {
+        delete[] colors_;
+        colors_ = new Color[width * height];
+    }
     SetWidth(width);
     SetHeight(height);
 }
