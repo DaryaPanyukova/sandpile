@@ -42,8 +42,8 @@ void Image::FillFileHeader(char file_header[]) const {
     }
     uint8_t padding_amount = ((4 - (width_ * kBytesPerPixel) % 4) % 4);
 
-    int stride = width_ * kBytesPerPixel + padding_amount;
-    int file_size = kHeaderSize + kInfoHeaderSize +
+    uint32_t stride = width_ * kBytesPerPixel + padding_amount;
+    uint32_t file_size = kHeaderSize + kInfoHeaderSize +
                     kColorTableSize + stride * height_;
 
     // file type
