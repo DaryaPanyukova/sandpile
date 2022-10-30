@@ -1,11 +1,11 @@
 #include <iostream>
 #include "Sandpile.h"
-
+/*
 const Color Sandpile::kWhite = Color(255, 255, 255);
 const Color Sandpile::kGreen = Color(61, 254, 142);
 const Color Sandpile::kPurple = Color(230, 61, 254);
 const Color Sandpile::kYellow = Color(247, 254, 61);
-const Color Sandpile::kBlack = Color(0, 0, 0);
+const Color Sandpile::kBlack = Color(0, 0, 0);*/
 
 void Print(uint64_t** ptr, size_t height, size_t width) {
     for (int i = 0; i < height; ++i) {

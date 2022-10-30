@@ -28,11 +28,11 @@ struct ExtendFlags {
 
 class Sandpile {
 public:
-    static const Color kWhite;
+  /*  static const Color kWhite;
     static const Color kGreen;
     static const Color kPurple;
     static const Color kYellow;
-    static const Color kBlack;
+    static const Color kBlack;*/
 
     Sandpile(size_t width, size_t height, uint64_t** grid);
 
