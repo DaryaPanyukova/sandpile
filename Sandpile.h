@@ -10,7 +10,6 @@
 #include "Image.h"
 
 
-
 struct ExtendFlags {
     bool up, down, left, right;
     ExtendFlags() {
@@ -28,12 +27,6 @@ struct ExtendFlags {
 
 class Sandpile {
 public:
-  /*  static const Color kWhite;
-    static const Color kGreen;
-    static const Color kPurple;
-    static const Color kYellow;
-    static const Color kBlack;*/
-
     Sandpile(size_t width, size_t height, uint64_t** grid);
 
     bool DoIteration();
@@ -43,7 +36,6 @@ public:
     void Save(const std::string& path);
 
 private:
-
     size_t width_; // width of grid
     size_t height_; // height of grid
 
@@ -57,7 +49,6 @@ private:
     uint64_t** tmp_grid_;
     bool isStable_;
 
-    //bool extend_left_, extend_right_, extend_up_, extend_down_;
     ExtendFlags flags_;
 
     void

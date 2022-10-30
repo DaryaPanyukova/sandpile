@@ -20,7 +20,7 @@ public:
 
     void SetHeight(size_t height);
 
-    Color GetColor(size_t x, size_t y) const;
+    uint8_t GetColor(size_t x, size_t y) const;
 
     void SetColor(size_t x, size_t y, const Color& color);
 
@@ -30,15 +30,20 @@ public:
 
     void FillFileInfoHeader(char informationHeader[]) const;
 
+    void FillFileColorTable(char color_table[]) const;
+
     void SaveImage(const std::string& path);
 
 private:
-    const int8_t kHeaderSize = 14;
-    const int8_t kInfoHeaderSize = 40;
+
+    const uint8_t kHeaderSize = 14;
+    const uint8_t kInfoHeaderSize = 40;
+    const uint8_t kBytesPerPixel = 1;
+    const uint8_t kColorTableSize = 20;
 
     size_t width_;
     size_t height_;
-    Color* colors_;
+    uint8_t* colors_;
 };
 
 

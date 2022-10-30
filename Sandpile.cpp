@@ -1,11 +1,6 @@
 #include <iostream>
 #include "Sandpile.h"
-/*
-const Color Sandpile::kWhite = Color(255, 255, 255);
-const Color Sandpile::kGreen = Color(61, 254, 142);
-const Color Sandpile::kPurple = Color(230, 61, 254);
-const Color Sandpile::kYellow = Color(247, 254, 61);
-const Color Sandpile::kBlack = Color(0, 0, 0);*/
+
 
 void Print(uint64_t** ptr, size_t height, size_t width) {
     for (int i = 0; i < height; ++i) {
@@ -55,7 +50,6 @@ void Extend(uint64_t**& array, size_t height, size_t width, ExtendFlags flags) {
 
 bool Sandpile::DoIteration() {
     isStable_ = true;
-    // Print(grid_, capacity_height_, capacity_width_);
 
     for (size_t y = grid_y_ + 1; y < grid_y_ + height_ - 1; ++y) {
         for (size_t x = grid_x_ + 1; x < grid_x_ + width_ - 1; ++x) {
@@ -95,9 +89,6 @@ bool Sandpile::DoIteration() {
         capacity_width_ = capacity_width_ * (flags_.left + flags_.right + 1);
         flags_.Reset();
     }
-
-    //  Print(grid_, capacity_height_, capacity_width_);
-    //  std::cout << "\n\n\n";
     return isStable_;
 }
 
@@ -109,7 +100,6 @@ void Sandpile::Save(const std::string& path) {
     UpdateImage();
     image_.SaveImage(path);
 }
-
 
 void Sandpile::UpdateImage() {
     image_.CreateNewImage(width_, height_);
@@ -130,9 +120,9 @@ void Sandpile::UpdateImage() {
     }
 }
 
-
-Sandpile::Sandpile(size_t width, size_t height, uint64_t** grid) : width_(
-        width), height_(height), grid_(grid), image_() {
+Sandpile::Sandpile(size_t width, size_t height, uint64_t** grid)
+        : width_(width), height_(height), grid_(grid),
+          image_(), isStable_(false) {
     flags_ = ExtendFlags();
     capacity_height_ = height_;
     capacity_width_ = width_;
@@ -153,15 +143,9 @@ void Sandpile::UpdateExtendFlags(size_t x, size_t y) {
     flags_.up = flags_.up || (y == 0);
     flags_.down = flags_.down || (y == capacity_height_ - 1);
 
-
     grid_x_ -= (x == grid_x_ && grid_x_ != 0);
     grid_y_ -= (y == grid_y_ && grid_y_ != 0);
 
     width_ += (x == (grid_x_ + width_ - 1));
     height_ += (y == (grid_y_ + height_ - 1));
-
 }
-
-
-
-

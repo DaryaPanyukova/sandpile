@@ -7,16 +7,13 @@
 #include <ctime>
 #include <iostream>
 
-std::string
-GenerateFileName(const std::string& path, const std::string& default_name,
-                 uint16_t number) {
+std::string GenerateFileName(const std::string& path,
+                             const std::string& default_name, uint16_t number) {
     return path + "\\" + default_name + "_" + std::to_string(number) + ".bmp";
 }
 
-
-void
-ReadToGrid(const std::string& path, uint64_t**& grid, size_t height,
-           size_t width) {
+void ReadToGrid(const std::string& path, uint64_t**& grid,
+                size_t height, size_t width) {
     grid = new uint64_t* [height];
     for (size_t i = 0; i < height; ++i) {
         grid[i] = new uint64_t[width];
@@ -36,7 +33,6 @@ ReadToGrid(const std::string& path, uint64_t**& grid, size_t height,
         grid[y][x] = amount;
     }
 }
-
 
 void
 ClearFolder(const std::string& output_path, const std::string& default_name,
@@ -60,7 +56,6 @@ ClearFolder(const std::string& output_path, const std::string& default_name,
     }
 }
 
-
 bool FileExists(const std::string& filename) {
     std::ifstream file(filename);
     if (file.is_open()) {
@@ -70,7 +65,6 @@ bool FileExists(const std::string& filename) {
         return false;
     }
 }
-
 
 int main(int argc, char** argv) {
     size_t max_iter, frequency, width, height;
@@ -94,7 +88,6 @@ int main(int argc, char** argv) {
         }
     }
 
-
     uint64_t** grid;
     width += 2;
     height += 2;
@@ -105,12 +98,10 @@ int main(int argc, char** argv) {
     std::string final_file = output_path + "\\final.bmp";
     ClearFolder(output_path, default_name, final_file);
 
-
     for (size_t i = 0; i < max_iter && !sandpile.Stable(); ++i) {
         sandpile.DoIteration();
 
         if (frequency != 0 && i % frequency == 0) {
-
             GenerateFileName(output_path, default_name,
                              i == 0 ? 0 : i / frequency);
             std::string output_file =
@@ -121,7 +112,6 @@ int main(int argc, char** argv) {
     }
 
     sandpile.Save(final_file);
-
 
     std::cout << clock() / 1000;
 }
