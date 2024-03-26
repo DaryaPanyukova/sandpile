@@ -1,11 +1,12 @@
 #include <cstring>
+#include <ctime>
 
+#include <iostream>
 #include <string>
 #include <sstream>
 
 #include "Sandpile.h"
-#include <ctime>
-#include <iostream>
+
 
 std::string GenerateFileName(const std::string& path,
                              const std::string& default_name, uint16_t number) {
@@ -53,16 +54,6 @@ ClearFolder(const std::string& output_path, const std::string& default_name,
         file.close();
         std::remove(final_file.c_str());
 
-    }
-}
-
-bool FileExists(const std::string& filename) {
-    std::ifstream file(filename);
-    if (file.is_open()) {
-        file.close();
-        return true;
-    } else {
-        return false;
     }
 }
 

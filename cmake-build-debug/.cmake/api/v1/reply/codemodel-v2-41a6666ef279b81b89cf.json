@@ -1,0 +1,60 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.21"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "labwork_3_DaryaPanyukova",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "labwork_3_DaryaPanyukova::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-labwork_3_DaryaPanyukova-Debug-a75be7a7dccd4c3fdc59.json",
+					"name" : "labwork_3_DaryaPanyukova",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "D:/ITMOlabs/basics_c++/labwork-3-DaryaPanyukova/cmake-build-debug",
+		"source" : "D:/ITMOlabs/basics_c++/labwork-3-DaryaPanyukova"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}
